@@ -50,7 +50,7 @@ export default function Login(){
     
     return(
         <div class="form">
-                    <h2>Login</h2>
+                    <h2>Login to your Account</h2>
                     <input onChange = {(event) => setName(event.target.value)} type="text" name="uname" placeholder="Enter Username Here"/>
                     <input onChange = {(event) => setPassword(event.target.value)} type="password" name="" placeholder="Enter Password Here"/>
                     <button class="btnn" onClick = {handleClick} type = "submit"><a href="#">Login</a></button>
