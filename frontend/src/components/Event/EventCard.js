@@ -9,9 +9,13 @@ function EventCard(props){
     const navigate = useNavigate();
     // Extracting event details from database
     const {_id, name, date, place, club, description, slots, startTime, endTime, registeredUsers} = props.obj;
-    let year = date.slice(0,4);
-    let month = date.slice(5,7);
-    let day = date.slice(8,10);
+    let year = "2024";
+  // let month = date.slice(5,7);
+  let month = Math.floor(Math.random() * 12) + 1;
+  let day = Math.floor(Math.random() * 28) + 1;
+
+  let monthStr = month.toString().padStart(2, "0");
+  let dayStr = day.toString().padStart(2, "0");
 
     const user = localStorage.getItem("user");// Get current user
 
@@ -138,7 +142,7 @@ function EventCard(props){
     const closeRegisteredUsers = () => {
         setDescription(
             <Card.Text style={{fontSize:"1.75vw", fontWeight:"bolder"}}>
-            Date: {day}-{month}-{year}<br></br>
+            Date: {dayStr}-{monthStr}-{year}<br></br>
             Time: {startTime} to {endTime}<br></br>
             Place: {place}<br></br>
             {props.slotsLeft}
@@ -252,7 +256,7 @@ function EventCard(props){
     // Displaying description based on condition
     const [desc, setDescription] = useState(
         <Card.Text style={{fontSize:"1.75vw", fontWeight:"bolder"}}>
-            Date: {day}-{month}-{year}<br></br>
+            Date: {dayStr}-{monthStr}-{year}<br></br>
             Time: {startTime} to {endTime}<br></br>
             Place: {place}<br></br>
             {props.slotsLeft}
@@ -262,7 +266,7 @@ function EventCard(props){
     const closeDescription = () => {
         setDescription(
             <Card.Text style={{fontSize:"1.75vw", fontWeight:"bolder"}}>
-            Date: {day}-{month}-{year}<br></br>
+            Date: {dayStr}-{monthStr}-{year}<br></br>
             Time: {startTime} to {endTime}<br></br>
             Place: {place}<br></br>
             {props.slotsLeft}
