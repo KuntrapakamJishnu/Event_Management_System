@@ -18,7 +18,7 @@ function UpdateEvent() {
 
   useEffect(() => {
     const eventID = localStorage.getItem("eventID");
-    Axios.get("http://localhost:4000/eventRoute/check-event/" + eventID)
+    Axios.get("https://event-management-system-f7wg-api.vercel.app/eventRoute/check-event/" + eventID)
       .then(response => {
         {
             // console.log(response.data);
