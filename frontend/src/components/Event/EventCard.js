@@ -23,7 +23,7 @@ function EventCard(props){
     const Book = () => {
         
         
-        Axios.get("http://localhost:4000/eventRoute/check-user/" + user)
+        Axios.get("https://event-management-system-f7wg-api.vercel.app/eventRoute/check-user/" + user)
         .then((res) => {
             if(res.status === 200){
                 if(res.data != null){
@@ -54,7 +54,7 @@ function EventCard(props){
 
                         Axios.all([
                         // Updating user information and adding event
-                        Axios.put("http://localhost:4000/eventRoute/update-user/" + res.data._id, userData)
+                        Axios.put("https://event-management-system-f7wg-api.vercel.app/eventRoute/update-user/" + res.data._id, userData)
                         .then((updateResponse) => {
                             if(updateResponse.status === 200)
                                 alert("Event Booked");
@@ -66,7 +66,7 @@ function EventCard(props){
                         
                         
                         // Updating event information by adding user and reducing slots
-                        Axios.put("http://localhost:4000/eventRoute/update-event/" + _id, eventData)
+                        Axios.put("https://event-management-system-f7wg-api.vercel.app/eventRoute/update-event/" + _id, eventData)
                         .then((eventUpdateResponse) => {
                             if(eventUpdateResponse.status === 200)
                             {    
@@ -170,7 +170,7 @@ function EventCard(props){
     // Function to delete event
     const deleteEvent = () => {
         Axios.all([ 
-        Axios.delete("http://localhost:4000/eventRoute/delete-event/" + _id)
+        Axios.delete("https://event-management-system-f7wg-api.vercel.app/eventRoute/delete-event/" + _id)
         .then((res) => {
             if(res.status === 200){
                 alert("Event deleted successfully");
@@ -181,7 +181,7 @@ function EventCard(props){
         })
         .catch((err) => alert(err)),
 
-        Axios.get("http://localhost:4000/eventRoute/user-list")
+        Axios.get("https://event-management-system-f7wg-api.vercel.app/eventRoute/user-list")
         .then((userResponse) => {
             if(userResponse.status === 200){
                 // Finding users who have booked current event
@@ -190,7 +190,7 @@ function EventCard(props){
                     let userData = collectedUsers[i];
                     userData.bookedEvents = userData.bookedEvents.filter((event) => event._id !== _id);
                     
-                    Axios.put("http://localhost:4000/eventRoute/update-user/" + collectedUsers[i]._id, userData)
+                    Axios.put("https://event-management-system-f7wg-api.vercel.app/eventRoute/update-user/" + collectedUsers[i]._id, userData)
                         .then((updateResponse) => {
                             if(updateResponse.status === 200)
                                 console.log("User details updated")
