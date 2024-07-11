@@ -7,7 +7,7 @@ export default function BookedEventsList(){
     const [arr, setArr] = useState([])
     const user = localStorage.getItem("user");
     useEffect(() => {
-        Axios.get("http://localhost:4000/eventRoute/check-user/" + user)
+        Axios.get("https://event-management-system-f7wg-api.vercel.app/eventRoute/check-user/" + user)
         .then((res) => {
             if(res.status === 200){
                 if(res.data != null){
